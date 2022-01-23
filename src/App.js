@@ -1,25 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from "react";
+import Jam from "./components/Jam";
+import Shortcut from "./components/Shortcut";
+import Todo from "./components/Todo";
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-mainbg object-fill h-screen text-white flex flex-col justify-center items-center bg-no-repeat bg-cover">
+      <Jam />
+      <Shortcut />
+      <Todo />
     </div>
   );
 }
-
-export default App;
