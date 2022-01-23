@@ -1,7 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logolist from "../assets/list.png";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 export default function Todo() {
+
   const [kelas, setKelas] = useState("invisible");
+  const [item, SetItem] = useState("");
+
+  const listClicked = async () => {
+    const { value: text } = await Swal.fire({
+      input: 'textarea',
+      inputLabel: 'Add To Do Item',
+      inputPlaceholder: 'Type your To Do Item here...',
+      inputAttributes: {
+        'aria-label': 'Type your To Do Item here'
+      },
+      showCancelButton: true
+    })
+    SetItem(text);
+  }
+
+  useEffect(() => {
+    localStorage.setItem("todoitem", item);
+  }, []);
   return (
     <div className="h-2/5 w-full flex justify-center mt-5">
       <div className="todocontainer bg-transparent w-5/12 h-1/4  rounded-md border-solid border-4 border-gray-300 overflow-hidden">
@@ -30,15 +51,19 @@ export default function Todo() {
               />
             </svg>
           </button>
-          <div className="todoname">Melakukan Sesuatu</div>
+          <div className="todoname">{item}</div>
         </div>
       </div>
-      <button className="block">
-        <img
-          src={logolist}
-          className="absolute w-8 h-15 right-8 bottom-8"
-        ></img>
-      </button>
+        <button className="block bg-gray-400" onClick={listClicked}>
+          <img
+            src={logolist}
+            className="absolute w-12 h-15 right-8 bottom-8 rounded-md hover:bg-gray-400"
+          ></img>
+        </button>
     </div>
   );
+}
+
+function AddToDoItem(todolist){
+
 }
