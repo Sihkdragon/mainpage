@@ -6,12 +6,10 @@ export default function Todo() {
   const [item, setItem] = useState([]);
 
   const listClicked = async () => {
-    const todoitem = [];
+    let todoitem = [];
     if (localStorage.getItem("todoitem")) {
       // todoitem.push(JSON.parse(localStorage.getItem("todoitem")));
-      let test = JSON.parse(localStorage.getItem("todoitem"));
-      console.log(test);
-      todoitem.push(test);
+      todoitem = JSON.parse(localStorage.getItem("todoitem"));
     }
     console.log("Setelah diambil 1 " + todoitem);
     const { value: text } = await Swal.fire({
