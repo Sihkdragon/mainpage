@@ -15,12 +15,13 @@ export default function Todo() {
       },
       showCancelButton: true,
     });
-    items.length < 1 ? setItems([text]) : setItems([...items, text]);
+
+    if (text) items.length < 1 ? setItems([text]) : setItems([...items, text]);
   };
 
   return (
-    <div className="h-2/5 w-1/2 mt-5">
-      <section className="max-w-xl  mx-auto overflow-auto">
+    <div className="h-full w-1/2 mt-5">
+      <section className="max-w-xl  mx-auto">
         {items &&
           items.map((item, index) => {
             return <TodoHandle item={item} key={index} keynumb={index} />;
@@ -30,7 +31,7 @@ export default function Todo() {
         <img
           alt="Add To Do Task"
           src={logolist}
-          className="absolute w-12 h-15 right-8 bottom-8 rounded-md bg-gray-700 hover:bg-gray-400"
+          className="fixed w-12 h-15 right-8 bottom-8 rounded-md bg-gray-700 hover:bg-gray-400"
         ></img>
       </button>
     </div>
