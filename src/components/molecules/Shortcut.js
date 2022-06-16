@@ -6,7 +6,7 @@ import unikomlogo from "../../assets/unikom.png";
 import ShortcutButton from "../atoms/ShortcutButton";
 export default function Shortcut() {
   return (
-    <div className="flex justify-around gap-x-10">
+    <div className="flex justify-around gap-x-4 md:gap-x-10">
       <ShortcutButton
         link="https://instagram.com"
         imgSrc={instagramlogo}
